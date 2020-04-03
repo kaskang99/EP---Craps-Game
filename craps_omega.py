@@ -39,20 +39,21 @@ while num_fichas > 0:
             print('Jogando os dados, valor sorteado é de {0} e {1}, e a soma dos valores deu {2}' .format(dado1, dado2, soma_dos_dados))
             dados_em_plb = dado1+dado2
             if pass_line_bet_sn == 'Sim':
+                print ("O seu resultado na aposta Pass Line Bet foi: ")
                 num_fichas, fase, dados_em_plb = lf.pass_line_bet(num_bet_plb,soma_dos_dados,num_fichas)
-                print ("pass line bet")
             if field_sn == 'Sim':
+                print ("O seu resultado na aposta Field foi: ")
                 num_fichas = lf.field(num_bet_field,soma_dos_dados,num_fichas)
-                print ("field")
             if any_craps_sn == 'Sim':
+                print ("O seu resultado na aposta Any Craps foi: ")
                 num_fichas = lf.any_craps(num_bet_any_craps,soma_dos_dados,num_fichas)
-                print ("any craps")
             if twelve_sn == 'Sim':
+                print ("O seu resultado na aposta Twelve foi: ")
                 num_fichas = lf.twelve(num_bet_twelve,soma_dos_dados,num_fichas)
-                print ("twelve")
-        while fase == "Point":
             if num_fichas<=0:
                 print("Você foi forçado a sair do jogo por não ter mais fichas para apostar")
+                break
+        while fase == "Point":
             dado1= random.randint(1, 6)
             dado2= random.randint(1, 6)
             soma_dos_dados= dado1 + dado2
@@ -74,10 +75,13 @@ while num_fichas > 0:
             print('Jogando os dados, valor sorteado é de {0} e {1}, e a soma dos valores deu {2}' .format(dado1, dado2, soma_dos_dados))
 
             if field_sn == 'Sim':
+                print ("O seu resultado na aposta Field foi: ")
                 num_fichas = lf.field(num_bet_field,soma_dos_dados,num_fichas)
             if any_craps_sn == 'Sim':
+                print ("O seu resultado na aposta Any Craps foi: ")
                 num_fichas = lf.any_craps(num_bet_any_craps,soma_dos_dados,num_fichas)
             if twelve_sn == 'Sim':
+                print ("O seu resultado na aposta Twelve foi: ")
                 num_fichas = lf.twelve(num_bet_twelve,soma_dos_dados,num_fichas)
             if soma_dos_dados == dados_em_plb or soma_dos_dados == 7:
                 fase = "Come Out"
@@ -87,6 +91,9 @@ while num_fichas > 0:
                 elif soma_dos_dados == 7:
                     num_fichas -= num_bet_plb
                     print ("Oh não você perdeu! Agora sua balança é de: {0} fichas!".format(num_fichas))
+            if num_fichas<=0:
+                print("Você foi forçado a sair do jogo por não ter mais fichas para apostar")
+                break
     if res_jogador == 'n':
         print ("OK até a próxima!")
         print ("Você está saindo do jogo com {0} fichas!".format(num_fichas))
